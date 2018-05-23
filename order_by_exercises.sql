@@ -4,10 +4,10 @@ SELECT first_name, last_name FROM employees WHERE (first_name = 'Irena' OR first
 ORDER BY last_name, first_name;
 
 SELECT first_name, last_name FROM employees WHERE last_name LIKE 'E%' OR last_name LIKE '%e'
-ORDER BY emp_no;
+ORDER BY emp_no DESC;
 
 SELECT first_name, last_name FROM employees WHERE last_name LIKE 'E%' AND last_name LIKE '%e'
-ORDER BY emp_no;
+ORDER BY emp_no DESC;
 
 -- SELECT first_name, last_name, hire_date FROM employees WHERE hire_date LIKE '199%';
 
