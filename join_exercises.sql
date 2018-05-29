@@ -34,18 +34,18 @@ JOIN dept_emp de ON d.dept_no = de.dept_no
 WHERE de.to_date = '9999-01-01'
 GROUP BY `Employee Name`,Department,Manager;
 
-SELECT DISTINCT e.gender AS 'Gender', SUM(s.salary)
+SELECT DISTINCT e.gender AS 'Gender', SUM(s.salary)/COUNT(s.emp_no) AS 'average'
 FROM employees AS e
 JOIN salaries AS s ON e.emp_no = s.emp_no
 WHERE s.to_date = '9999-01-01'
 GROUP BY e.gender;
 
-SELECT DISTINCT e.gender AS 'Gender', SUM(s.salary)
+SELECT DISTINCT e.gender AS 'Gender', SUM(s.salary)/COUNT(s.emp_no) AS 'average'
 FROM employees AS e
 JOIN salaries AS s ON e.emp_no = s.emp_no
 GROUP BY e.gender;
 
-SELECT DISTINCT e.gender AS 'Gender', SUM(s.salary)
+SELECT DISTINCT e.gender AS 'Gender', SUM(s.salary)/COUNT(s.emp_no) AS 'average'
 FROM employees AS e
 JOIN salaries AS s ON e.emp_no = s.emp_no
 JOIN dept_manager AS manager ON e.emp_no = manager.emp_no
@@ -55,7 +55,7 @@ WHERE s.to_date = '9999-01-01' AND e.emp_no IN (
 )
 GROUP BY Gender;
 
-SELECT DISTINCT e.gender AS 'Gender', SUM(s.salary)
+SELECT DISTINCT e.gender AS 'Gender', SUM(s.salary)/COUNT(s.emp_no) AS 'average'
 FROM employees AS e
 JOIN salaries AS s ON e.emp_no = s.emp_no
 JOIN dept_manager AS manager ON e.emp_no = manager.emp_no
