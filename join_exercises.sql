@@ -23,4 +23,13 @@ JOIN employees e ON dm.emp_no = e.emp_no
 WHERE s.to_date = '9999-01-01' AND dm.to_date = '9999-01-01'
 GROUP BY `Department Name`, e.first_name, e.last_name, s.salary;
 
-SELECT CONCAT(e.first_name, ' ', e.last_name) AS 'Employee Name', d.dept_name AS 'Department', CONCAT(e.first_name, ' ', e.last_name) AS 'Manager'
+-- BONUS
+
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS 'Employee Name', d.dept_name AS 'Department', CONCAT(me.first_name, ' ', me.last_name) AS 'Manager'
+FROM employees AS e
+JOIN dept_manager AS dm ON e.emp_no = dm.emp_no
+JOIN employees AS me ON dm.emp_no = me.emp_no
+JOIN departments d ON dm.dept_no = d.dept_no
+JOIN dept_emp de ON d.dept_no = de.dept_no
+WHERE de.to_date = '9999-01-01'
+GROUP BY `Employee Name`,Department,Manager;
