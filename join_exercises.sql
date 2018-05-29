@@ -22,3 +22,5 @@ JOIN salaries AS s ON dm.emp_no = s.emp_no
 JOIN employees e ON dm.emp_no = e.emp_no
 WHERE s.to_date = '9999-01-01' AND dm.to_date = '9999-01-01'
 GROUP BY `Department Name`, e.first_name, e.last_name, s.salary;
+
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS 'Employee Name', d.dept_name AS 'Department', CONCAT(e.first_name, ' ', e.last_name) AS 'Manager'
