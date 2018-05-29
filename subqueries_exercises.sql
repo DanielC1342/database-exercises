@@ -21,3 +21,23 @@ WHERE gender = 'F' AND to_date = '9999-01-01' AND e.emp_no IN (
   SELECT m.emp_no
   FROM dept_manager
 );
+
+-- BONUS
+
+SELECT dept_name
+FROM departments AS d
+JOIN dept_manager AS m ON d.dept_no = m.dept_no
+JOIN employees AS e ON m.emp_no = e.emp_no
+WHERE gender = 'F' AND to_date = '9999-01-01' AND e.emp_no IN (
+  SELECT m.emp_no
+  FROM dept_manager
+)
+ORDER BY dept_name;
+
+SELECT e.first_name, e.last_name
+FROM employees AS e
+JOIN salaries AS s ON e.emp_no = s.emp_no
+WHERE salary = (
+  SELECT MAX(salary)
+  FROM salaries
+);
